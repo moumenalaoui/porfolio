@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block nav_writing %}<span class="nav-current">Writing</span>{% endblock nav_writing %}
+
+{% block main %}
+  <main id="content" class="page">
+    <header class="page-header">
+      <h1 class="page-title">{{ section.title }}</h1>
+    </header>
+
+    <ul class="entries">
+    {% for page in section.pages %}
+      <li class="entry">
+        <div class="entry-meta">
+          {% if page.extra.forthcoming %}{% if page.extra.source %}{{ page.extra.source }} · {% endif %}forthcoming{% elif page.date %}{{ page.date | date(format="%Y-%m-%d") }}{% endif %}
+        </div>
+        {% if page.extra.forthcoming %}
+          <span class="entry-title">{{ page.title }}</span>
+        {% elif page.extra.url %}
+          <a class="entry-title" href="{{ page.extra.url }}">{{ page.title }}</a>
+        {% else %}
+          <a class="entry-title" href="{{ page.permalink }}">{{ page.title }}</a>
+        {% endif %}
+        {% if page.description %}<p class="entry-desc">{{ page.description }}</p>{% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </main>
+{% endblock main %}

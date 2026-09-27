@@ -1,0 +1,37 @@
+{% set meta_description = config.description %}
+{% if page and page.description %}
+  {% set meta_description = page.description %}
+{% elif section and section.description %}
+  {% set meta_description = section.description %}
+{% endif %}
+
+{% set canonical_url = config.base_url %}
+{% if page %}
+  {% set canonical_url = page.permalink %}
+{% elif section %}
+  {% set canonical_url = section.permalink %}
+{% endif %}
+
+{% set social_title = config.title %}
+{% if page and page.title %}
+  {% set social_title = page.title %}
+{% elif section and section.title %}
+  {% set social_title = section.title %}
+{% endif %}
+
+{% set social_type = "website" %}
+{% if page %}
+  {% set social_type = "article" %}
+{% endif %}
+
+<title>{{ config.title }}</title>
+<meta name="description" content="{{ meta_description }}">
+<link rel="canonical" href="{{ canonical_url }}">
+<meta property="og:site_name" content="{{ config.title }}">
+<meta property="og:title" content="{{ social_title }}">
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="og:type" content="{{ social_type }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:image" content="{{ get_url(path=config.extra.og_image, trailing_slash=false) }}">
+<meta property="og:image:alt" content="Text card reading {{ config.extra.name }}.">
+<meta name="twitter:card" content="summary_large_image">

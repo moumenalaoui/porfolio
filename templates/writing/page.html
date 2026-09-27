@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block nav_writing %}<span class="nav-current">Writing</span>{% endblock nav_writing %}
+
+{% block main %}
+  <main id="content" class="page">
+    <article class="prose-block">
+      <header class="page-header">
+        {% set has_source = page.extra.source is defined and page.extra.source != "" %}
+        {% if page.date or has_source %}
+          <p class="meta-line">
+            {% if page.date %}
+              <time datetime="{{ page.date }}">{{ page.date | date(format="%B %e, %Y") }}</time>
+            {% endif %}
+            {% if has_source %}
+              {% if page.date %}<span class="separator" aria-hidden="true"> · </span>{% endif %}
+              {{ page.extra.source }}
+            {% endif %}
+          </p>
+        {% endif %}
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.extra.url is defined and page.extra.url != '' %}
+          <p class="meta-line"><a href="{{ page.extra.url }}" rel="noopener noreferrer">Read at source</a></p>
+        {% endif %}
+      </header>
+      <div class="prose">{{ page.content | safe }}</div>
+    </article>
+  </main>
+{% endblock main %}

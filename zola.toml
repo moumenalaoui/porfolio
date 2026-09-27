@@ -1,0 +1,22 @@
+base_url = "https://moumenalaoui.me"
+title = "Moumen Alaoui"
+description = "Systems engineer working on censorship measurement, OSINT systems, privacy, and contested networks."
+author = "Moumen Alaoui"
+compile_sass = false
+build_search_index = false
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+minify_html = true
+
+[markdown]
+render_emoji = false
+smart_punctuation = false
+
+[extra]
+accent = "#bd0840"
+og_image = "og/site.svg"
+name = "Moumen Alaoui"
+github = "https://github.com/moumenalaoui"
+tor_gitlab = "https://gitlab.torproject.org/moumenalaoui"
+linkedin = "https://www.linkedin.com/in/moumenalaoui/"
+email = "mailto:moumenalaoui@proton.me"

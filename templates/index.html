@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block nav_home %}<span class="nav-current">Home</span>{% endblock nav_home %}
+
+{% block main %}
+  <main id="content" class="page page-home">
+    <header class="hero-block">
+      <h1 class="site-name">{{ config.extra.name }}</h1>
+    </header>
+    <div class="prose home-prose">{{ section.content | safe }}</div>
+  </main>
+{% endblock main %}
